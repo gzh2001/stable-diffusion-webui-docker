@@ -29,8 +29,7 @@ FROM python:3.10.9-slim
 
 ENV DEBIAN_FRONTEND=noninteractive PIP_PREFER_BINARY=1
 
-RUN pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple && \
-  sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 RUN --mount=type=cache,target=/var/cache/apt \
   apt-get update && \
