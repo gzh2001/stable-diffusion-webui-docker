@@ -2,6 +2,8 @@ FROM alpine/git:2.36.2 as download
 
 COPY clone.sh /clone.sh
 
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/g' /etc/apk/repositories
+
 RUN . /clone.sh taming-transformers https://ghproxy.com/github.com/CompVis/taming-transformers.git 24268930bf1dce879235a7fddd0b2355b84d7ea6 \
   && rm -rf data assets **/*.ipynb
 
